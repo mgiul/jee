@@ -16,7 +16,6 @@ import dao.IPanierServices;
 import entities.Client;
 import entities.Commande;
 import entities.LigneCommande;
-
 import entities.Produit;
 
 @Stateful
@@ -70,6 +69,17 @@ public class IPanierServicesImpl implements IPanierServices {
 		return cmd;
 		
 		
+	}
+	
+	
+	public boolean  isPossible(int id,double solde){
+		return true;
+	}
+	public void retirer(int id,double solde){
+		
+	}
+	public boolean login(String email,String pass){
+		return false;
 	}
 
 
