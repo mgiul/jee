@@ -20,6 +20,7 @@ public interface IPanierServices {
 	public double getTotal();
 	public int  getSize();
 	public void delete(Long id_prod) ;
+	public void removeAll();
 	public Commande enregistrerCommande(Client client);
     //methodes des webservice
 	public boolean  isPossible(int id,double solde);

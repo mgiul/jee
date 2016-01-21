@@ -62,6 +62,11 @@ public class IPanierServicesImpl implements IPanierServices {
 	public void delete(Long id_prod) {
 		items.remove(id_prod);
 	}
+	
+	public void removeAll() {
+		items.clear();
+		}
+	
 	@Override
 	public Commande enregistrerCommande(Client client) {
 		em.persist(client);
@@ -95,6 +100,8 @@ public class IPanierServicesImpl implements IPanierServices {
 	public boolean login(String email,String pass){
 		return false;
 	}
+
+	
 
 
 }
