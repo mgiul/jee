@@ -7,11 +7,10 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import dao.IClientServices;
-import dao.IClientServicesLocal;
 import entities.Client;
 
 @Stateless
-public class IClientServivesImpl implements IClientServices,IClientServicesLocal{
+public class IClientServivesImpl implements IClientServices{
 @PersistenceContext
 private EntityManager em;
 	

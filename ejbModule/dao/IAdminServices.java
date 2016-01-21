@@ -1,13 +1,14 @@
 package dao;
 
 import javax.ejb.Local;
+import javax.ejb.Remote;
 
 import entities.Admin;
 import entities.Client;
 
 
 
-@Local
+@Remote
 public interface IAdminServices {
 	public Long AddAdmin(Admin admin);
 	public Admin getAdmin(Long id_ad);

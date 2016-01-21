@@ -10,11 +10,10 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import dao.ICategorieServices;
-import dao.ICategorieServicesLocal;
 import entities.Categorie;
 
 @Stateless
-public class ICategorieServicesImpl  implements ICategorieServices,ICategorieServicesLocal{
+public class ICategorieServicesImpl  implements ICategorieServices {
 @PersistenceContext
 private EntityManager em;
 	@Override

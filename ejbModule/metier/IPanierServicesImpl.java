@@ -23,30 +23,36 @@ public class IPanierServicesImpl implements IPanierServices {
 	  @PersistenceContext
 	    private EntityManager em;
 
-	private Map<Long,LigneCommande> items=new HashMap<Long,LigneCommande>();
+	private Map<Long,LigneCommande> items = new HashMap<Long,LigneCommande>();
+	
+	public IPanierServicesImpl() {
+		// TODO Auto-generated constructor stub
+		
+	}
 	
 	public void addProduit(Produit produit,int quantite) {
 		if(items.get(produit.getIdProduit())==null){
 		LigneCommande lc=new LigneCommande();
 		lc.setProduit(produit);
-		lc.setPrix(produit.getPrix());
+		lc.setPrix(produit.getPrix()*quantite);
 		lc.setQuatite(quantite);
+		items.put(produit.getIdProduit(),lc);
 		
-			
 			}else {
 				LigneCommande lc=items.get(produit.getIdProduit());
 				lc.setQuatite(quantite+lc.getQuatite());
+				lc.setPrix(produit.getPrix()*lc.getQuatite());
+				items.remove(produit.getIdProduit());
+				items.put(produit.getIdProduit(),lc);
+				
 			}
 		
 	}
-	public Collection<LigneCommande> getAllLigneCommande() {
-		return items.values();
-		
-	}
+
 	public double getTotal() {
 		double total=0;
 		for (LigneCommande ligneCommande : items.values()) {
-			total+=ligneCommande.getPrix()*ligneCommande.getQuatite();
+			total+=ligneCommande.getPrix();
 		}
 		return total;
 	}
@@ -72,6 +78,14 @@ public class IPanierServicesImpl implements IPanierServices {
 	}
 	
 	
+	public Map<Long, LigneCommande> getItems() {
+		return items;
+	}
+
+	public void setItems(Map<Long, LigneCommande> items) {
+		this.items = items;
+	}
+
 	public boolean  isPossible(int id,double solde){
 		return true;
 	}

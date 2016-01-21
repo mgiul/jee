@@ -9,14 +9,13 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import dao.ProduitServices;
-import dao.ProduitServicesLocal;
 import entities.Categorie;
 import entities.Produit;
 
 
 
 @Stateless
-public class ProduitImpl implements ProduitServices,ProduitServicesLocal {
+public class ProduitImpl implements ProduitServices {
 	  @PersistenceContext
 	    private EntityManager em;
 	@Override

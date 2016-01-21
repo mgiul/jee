@@ -5,6 +5,7 @@ package dao;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.Remote;
 
@@ -14,8 +15,8 @@ import entities.LigneCommande;
 import entities.Produit;
 @Remote
 public interface IPanierServices {
-	public void addProduit(Produit produit,int quantite) ;
-	public Collection<LigneCommande> getAllLigneCommande() ;
+	public void addProduit(Produit produit,int quantite);
+	public Map<Long, LigneCommande> getItems();
 	public double getTotal();
 	public int  getSize();
 	public void delete(Long id_prod) ;
