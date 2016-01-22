@@ -39,11 +39,26 @@ private EntityManager em;
 	}
 
 	@Override
-	public Admin authenticate(String login, String password) {
+	public Admin authenticate(String login, String password) {		
+		Admin admin=null;	
 		Query qr=em.createQuery("select ad from Admin ad where ad.nomAdmin=:login and ad.passwordAdmin=:password");
 		qr.setParameter("login", login);
 		qr.setParameter("password", password);
-		return (Admin) qr.getSingleResult();
+		if(qr.getResultList().isEmpty())
+		{
+			admin=null;   
+		}
+		if(qr.getResultList().size()>1)
+		{
+			admin=null;
+		}
+		if(qr.getResultList().size()==1)
+		{
+			admin=(Admin) qr.getSingleResult();
+		}
+		return admin;
+		
+		
 	}
 
 }

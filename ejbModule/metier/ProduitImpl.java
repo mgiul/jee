@@ -47,7 +47,7 @@ public class ProduitImpl implements ProduitServices {
 	@Override
 	public void removeProduit(Long id_pr) {
 		Produit pr=em.find(Produit.class, id_pr);
-		
+	em.remove(pr);
 	}
 	@Override
 	public void updateProduit(Produit produit) {

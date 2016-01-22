@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Local;
@@ -17,4 +18,5 @@ public interface IClientServices {
 	public void removeClient(Long id_cl);
 	public void updateClient(Client client);
 	public Client authenticate(String login, String password);
+	public ArrayList<Client> getAllClients();
 }

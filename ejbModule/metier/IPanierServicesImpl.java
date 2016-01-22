@@ -12,6 +12,9 @@ import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import com.sun.jersey.api.client.ClientResponse;
+import com.sun.jersey.api.client.WebResource;
+
 import dao.IPanierServices;
 import entities.Client;
 import entities.Commande;
@@ -92,10 +95,48 @@ public class IPanierServicesImpl implements IPanierServices {
 	}
 
 	public boolean  isPossible(int id,double solde){
-		return true;
+		
+		
+		
+		 com.sun.jersey.api.client.Client client = com.sun.jersey.api.client.Client.create();
+			
+		    WebResource resource = client.resource("http://105.145.210.56:8081/ecommerce");
+			
+			//String req="{\"id\":\"1\"}";
+			ClientResponse response = resource.path("/ispossible").
+					  queryParam("id", ""+id).
+					  queryParam("solde", ""+solde).post(ClientResponse.class);
+					System.out.println(response);
+			
+			System.out.println("---");
+					if (response.getStatus() == 200) {
+						return true;
+					}
+
+			
+
+			return false;
 	}
 	public void retirer(int id,double solde){
 		
+		 com.sun.jersey.api.client.Client client = com.sun.jersey.api.client.Client.create();
+			
+		    WebResource resource = client.resource("http://localhost:8081/ecommerce");
+			
+			//String req="{\"id\":\"1\"}";
+			ClientResponse response = resource.path("/retirer").
+					  queryParam("id", ""+id).
+					  queryParam("solde", ""+solde).post(ClientResponse.class);
+					System.out.println(response);
+			
+			System.out.println("---");
+					if (response.getStatus() == 200) {
+						//return true;
+					}
+
+			
+
+		//	return false;
 	}
 	public boolean login(String email,String pass){
 		return false;

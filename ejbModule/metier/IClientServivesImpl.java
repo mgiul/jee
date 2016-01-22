@@ -1,5 +1,7 @@
 package metier;
 
+import java.util.ArrayList;
+
 import javax.ejb.Stateless;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
@@ -58,5 +60,10 @@ private EntityManager em;
 	public void updateClient(Client client) {
 		em.merge(client);
 		
+	}
+	@Override
+	public ArrayList<Client> getAllClients() {
+		Query qr=em.createQuery("select cl from Client cl");
+		return (ArrayList<Client> ) qr.getResultList();
 	}
 }
